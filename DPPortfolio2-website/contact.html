@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — David Paull</title>
+  <meta name="description" content="Get in touch with David Paull — open to new projects, creative partnerships, and senior creative roles.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">David<span>.</span>Paull</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="photography.html">Photography</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="page-spacer"></div>
+
+  <section class="section">
+    <div class="container">
+      <p class="section-label fade-in">Get in Touch</p>
+      <h1 class="fade-in">Let's build something <em>together</em>.</h1>
+      <p class="lead fade-in" style="margin-top: var(--space-md);">I'm open to new projects, creative partnerships, and senior creative roles — remote or Gold Coast–based.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Info Column -->
+        <div class="contact-info fade-in">
+          <div style="margin-bottom: var(--space-md);">
+            <p style="color: var(--text-secondary); max-width: 480px;">I've spent my career navigating the space where art, design, and photography converge. Every project is an opportunity to take a creative vision and make it real — whether that means shaping light in a studio, orchestrating a national campaign, or building an ecommerce experience that drives growth.</p>
+            <p style="color: var(--text-secondary); margin-top: var(--space-sm); max-width: 480px;">If you're looking for a creative director who leads from the front and delivers at every level — from strategy and concept through to final production — I'd welcome the conversation.</p>
+          </div>
+
+          <div class="contact-detail">
+            <span class="contact-detail-label">Email</span>
+            <a href="/cdn-cgi/l/email-protection#0561647360456370766c6a6b6860616c642b727163"><span class="__cf_email__" data-cfemail="2c484d5a496c4a595f454342414948454d025b584a">[email&#160;protected]</span></a>
+          </div>
+
+          <div class="contact-detail">
+            <span class="contact-detail-label">Phone</span>
+            <a href="tel:+61402034986">0402 034 986</a>
+          </div>
+
+          <div class="contact-detail">
+            <span class="contact-detail-label">Location</span>
+            <span>Burleigh Heads, QLD, Australia</span>
+          </div>
+
+          <div class="contact-detail">
+            <span class="contact-detail-label">Studio</span>
+            <a href="https://fusionmedia.wtf" target="_blank" rel="noopener">fusionmedia.wtf</a>
+          </div>
+        </div>
+
+        <!-- Form Column -->
+        <form class="contact-form fade-in" id="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Send Message</button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Panoramic Image -->
+  <section style="padding: var(--space-xl) 0 0; overflow: hidden;">
+    <img src="https://images.squarespace-cdn.com/content/v1/64f7ea35d7e9630c4fc4d44b/0f853d9d-fed2-4bea-bf5b-17518d281ff8/SW_Dolphin_Paddleboard_Panorama2-High_60x115_300dpi_F39.jpg" alt="Panoramic photography by David Paull" style="width: 100%; max-height: 350px; object-fit: cover; filter: saturate(0.7); opacity: 0.6;">
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-copy">&copy; 2026 David Paull — Fusion Media. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="photography.html">Photography</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ============================================
+   DAVID PAULL — PORTFOLIO
+   Shared JavaScript
+   ============================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ---- Mobile Nav Toggle ----
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      links.classList.toggle('open');
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        links.classList.remove('open');
+      });
+    });
+  }
+
+  // ---- Scroll Animations ----
+  const fadeEls = document.querySelectorAll('.fade-in');
+  if (fadeEls.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    fadeEls.forEach(el => observer.observe(el));
+  }
+
+  // ---- Lightbox ----
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  if (lightbox) {
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        if (img) {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+
+  // ---- Gallery Filters ----
+  const filters = document.querySelectorAll('.gallery-filter');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  if (filters.length && galleryItems.length) {
+    filters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filters.forEach(f => f.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.filter;
+        galleryItems.forEach(item => {
+          if (cat === 'all' || item.dataset.category === cat) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // ---- Contact Form (simple validation UI) ----
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'MESSAGE SENT ✓';
+      btn.style.background = 'var(--accent)';
+      btn.style.color = 'var(--bg-primary)';
+      btn.style.borderColor = 'var(--accent)';
+      setTimeout(() => {
+        btn.textContent = 'SEND MESSAGE';
+        btn.style.background = '';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+        form.reset();
+      }, 3000);
+    });
+  }
+
+  // ---- Active Nav Link ----
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelect
