@@ -5,9 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Paull — Creative Director & Visual Storyteller</title>
   <meta name="description" content="Creative Director with 20+ years leading brand, campaign, and ecommerce creative across entertainment, health, DTC, lifestyle, and agriculture.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="David Paull — Creative Director & Strategic Designer">
+  <meta property="og:description" content="20+ years leading brand, campaign, and ecommerce creative across entertainment, health, DTC, lifestyle, and agriculture.">
+  <meta property="og:image" content="https://davidpaull.com/projects-hero.png">
+  <meta property="og:url" content="https://davidpaull.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="David Paull — Creative Director & Strategic Designer">
+  <meta name="twitter:description" content="20+ years leading brand, campaign, and ecommerce creative across entertainment, health, DTC, lifestyle, and agriculture.">
+  <meta name="twitter:image" content="https://davidpaull.com/projects-hero.png">
+  <meta name="theme-color" content="#048787">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://images.squarespace-cdn.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Libre+Franklin:wght@400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="https://images.squarespace-cdn.com/content/v1/64f7ea35d7e9630c4fc4d44b/087aebfd-c7ee-4505-bdd1-c7eecd0aedf8/HomePage_Shepard.jpg">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="index-page">
 
   <!-- Navigation -->
   <nav class="nav">
@@ -16,7 +31,10 @@
       <a href="about.html">About</a>
       <a href="projects.html">Projects</a>
       <a href="photography.html">Photography</a>
-      <a href="contact.html">Contact</a>
+    <a href="tel:+61402034986" class="nav-icon" aria-label="Call David Paull" style="display:inline-flex;align-items:center;margin-left:0.5rem;"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg></a>
+    <a href="https://www.linkedin.com/in/david-paull" target="_blank" rel="noopener" class="nav-icon" aria-label="LinkedIn" style="display:inline-flex;align-items:center;margin-left:0.25rem;"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="#" class="nav-icon" aria-label="Share" onclick="if(navigator.share){navigator.share({title:document.title,url:window.location.href});}return false;" style="display:inline-flex;align-items:center;margin-left:0.25rem;"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></a>
+    <a href="DavePaull_Portfolio_26March.pdf" target="_blank" rel="noopener" class="nav-icon" aria-label="Download Resume" style="display:inline-flex;align-items:center;margin-left:0.25rem;"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
     </div>
     <button class="nav-toggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -26,16 +44,12 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-bg">
-      <img src="https://images.squarespace-cdn.com/content/v1/64f7ea35d7e9630c4fc4d44b/087aebfd-c7ee-4505-bdd1-c7eecd0aedf8/HomePage_Shepard.jpg" alt="Creative direction and photography by David Paull">
+      <img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/64f7ea35d7e9630c4fc4d44b/087aebfd-c7ee-4505-bdd1-c7eecd0aedf8/HomePage_Shepard.jpg" alt="Creative direction and photography by David Paull">
     </div>
     <div class="container hero-content">
-      <p class="hero-subtitle">Creative Director &amp; Visual Storyteller</p>
+      <p class="hero-subtitle">Creative Director &amp; Strategic Designer</p>
       <h1 class="hero-title">Shaping brands<br>through <em>vision</em><br>&amp; craft.</h1>
-      <p class="lead hero-desc">Twenty years directing brand, campaign, and ecommerce creative across four continents. I lead strategy, shape visual identity, and produce the work — from concept through final pixel, frame, and print run.</p>
-      <div class="hero-actions">
-        <a href="projects.html" class="btn btn-primary btn-arrow">View Selected Work</a>
-        <a href="contact.html" class="btn btn-arrow">Get in Touch</a>
-      </div>
+      <p class="lead hero-desc">20+ years leading brand, campaign, and ecommerce creative across entertainment, health, DTC, lifestyle, and agriculture. The CD who still makes things — brand strategy one day, Figma design systems the next, behind the camera the day after.</p>
     </div>
     <div class="scroll-indicator">Scroll ↓</div>
   </section>
@@ -44,57 +58,57 @@
   <section class="clients-section">
     <p class="section-label clients-label">Selected Clients &amp; Brands</p>
     <div class="marquee-track">
-      <span>Village Roadshow</span>
-      <span>Aptus Plant Tech</span>
-      <span>Pellucid</span>
-      <span>Leafio</span>
-      <span>Natural Beauty</span>
-      <span>Riper.io</span>
-      <span>Goodman Fielder</span>
-      <span>Jupiters Casino</span>
-      <span>Lionsgate</span>
-      <span>DockPot</span>
-      <span>ESmart Farms</span>
+      <span><img loading="lazy" src="logo-vrtp.png" alt="Village Roadshow"></span>
+      <span><img loading="lazy" src="logo-aptus.png" alt="Aptus Plant Tech"></span>
+      <span><img loading="lazy" src="logo-naturalbeauty.png" alt="Natural Beauty"></span>
+      <span><img loading="lazy" src="logo-lionsgate.png" alt="Lionsgate"></span>
+      <span><img loading="lazy" src="logo-dockpot.png" alt="DockPot"></span>
+      <span><img loading="lazy" src="logo-jupiters.jpg" alt="Jupiters Casino"></span>
+      <span><img loading="lazy" src="logo-montu.png" alt="Montu"></span>
+      <span><img loading="lazy" src="logo-leafio.png" alt="Leafio"></span>
+      <span><img loading="lazy" src="logo-fusionmedia.png" alt="Fusion Media"></span>
       <!-- Duplicate for seamless loop -->
-      <span>Village Roadshow</span>
-      <span>Aptus Plant Tech</span>
-      <span>Pellucid</span>
-      <span>Leafio</span>
-      <span>Natural Beauty</span>
-      <span>Riper.io</span>
-      <span>Goodman Fielder</span>
-      <span>Jupiters Casino</span>
-      <span>Lionsgate</span>
-      <span>DockPot</span>
-      <span>ESmart Farms</span>
+      <span><img loading="lazy" src="logo-vrtp.png" alt="Village Roadshow"></span>
+      <span><img loading="lazy" src="logo-aptus.png" alt="Aptus Plant Tech"></span>
+      <span><img loading="lazy" src="logo-naturalbeauty.png" alt="Natural Beauty"></span>
+      <span><img loading="lazy" src="logo-lionsgate.png" alt="Lionsgate"></span>
+      <span><img loading="lazy" src="logo-dockpot.png" alt="DockPot"></span>
+      <span><img loading="lazy" src="logo-jupiters.jpg" alt="Jupiters Casino"></span>
+      <span><img loading="lazy" src="logo-montu.png" alt="Montu"></span>
+      <span><img loading="lazy" src="logo-leafio.png" alt="Leafio"></span>
+      <span><img loading="lazy" src="logo-fusionmedia.png" alt="Fusion Media"></span>
     </div>
   </section>
-
-  <!-- Intro blurb -->
-  <section class="section">
-    <div class="container">
-      <div class="fade-in" style="max-width: 720px;">
-        <p class="section-label">Two Decades of Creative Leadership</p>
-        <p class="lead">Blending photography, design, and strategic thinking to build campaigns and brands that deliver measurable commercial outcomes — for clients spanning entertainment, health and wellness, DTC ecommerce, agri-tech, and lifestyle.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="container"><div class="section-divider"></div></div>
 
   <!-- Featured Projects -->
-  <section class="section">
+  <section class="section" style="padding-top: var(--space-lg);">
     <div class="container">
-      <p class="section-label fade-in">Featured Work</p>
+      <div class="project-card fade-in">
+        <a href="project-leafio.html" class="project-card-image">
+          <img loading="lazy" src="leafio-cover.png" alt="Leafio — Medical Cannabis Brand">
+        </a>
+        <div class="project-card-content">
+          <p class="section-label">Featured Project</p>
+          <h3>Leafio</h3>
+          <p class="lead">Led the creative transformation of a national medical cannabis pharmacy network of 4,000+ pharmacies — under strict pharmaceutical advertising regulations. Brand identity, campaign creative, publications, and a B2B lead gen campaign that delivered 5m 9s average session duration.</p>
+          <div class="tags">
+            <span class="tag">Creative Strategy</span>
+            <span class="tag">Branding</span>
+            <span class="tag">Photography</span>
+            <span class="tag">Creative Direction</span>
+          </div>
+          <a href="project-leafio.html" class="btn btn-arrow" style="align-self: flex-start; margin-top: 0.5rem;">View Case Study</a>
+        </div>
+      </div>
 
       <div class="project-card fade-in">
         <a href="project-aptus.html" class="project-card-image">
-          <img src="https://images.squarespace-cdn.com/content/v1/64f7ea35d7e9630c4fc4d44b/cd1a72e7-60a3-49ae-9cd6-23e70d7f9f40/APTUS-Header.jpg" alt="Aptus Plant Tech rebrand">
+          <img loading="lazy" src="aptus-hero.png" alt="Aptus Plant Tech rebrand">
         </a>
         <div class="project-card-content">
           <p class="section-label">Featured Project</p>
           <h3>Aptus Plant Tech</h3>
-          <p class="lead">Directed a full global rebrand and Shopify ecommerce relaunch across four countries. Product photography, packaging, campaign strategy, and hand-coded UI components delivered a 400% sales increase in the first month.</p>
+          <p class="lead">Directed the full rebrand and Shopify ecommerce relaunch for this DTC plant nutrition brand across AU, NZ, US, and Canada — resulting in a 400% sales increase in the first month post-launch. Identity, packaging, product photography, art direction, and modular creative systems for Meta advertising.</p>
           <div class="tags">
             <span class="tag">Creative Strategy</span>
             <span class="tag">Branding</span>
@@ -107,12 +121,12 @@
 
       <div class="project-card fade-in">
         <a href="project-vrtp.html" class="project-card-image">
-          <img src="https://images.squarespace-cdn.com/content/v1/64f7ea35d7e9630c4fc4d44b/702616b6-0cea-403a-9600-5a309e4e2355/VRTP2017.png" alt="Village Roadshow Theme Parks F&B">
+          <img loading="lazy" src="vrtp-hero.webp" alt="Village Roadshow Theme Parks F&B">
         </a>
         <div class="project-card-content">
           <p class="section-label">Featured Project</p>
-          <h3>Village Roadshow — F&amp;B Creative</h3>
-          <p class="lead">Fifteen years of creative ownership across 30+ food and beverage outlets at six theme parks. Logo design, venue theming, menu board systems, food photography, and architectural illustration for one of Australia's largest entertainment groups.</p>
+          <h3>Village Roadshow</h3>
+          <p class="lead">Helped scale the in-house creative studio from a 4-person team to an 18-person internal agency across Sea World, Movie World, Wet'n'Wild, Paradise Country, Outback Spectacular, and TopGolf — replacing all external agencies. Delivered 4–6 major campaigns per year across TV, cinema, social, print, and OOH over 15+ years.</p>
           <div class="tags">
             <span class="tag">F&amp;B Branding</span>
             <span class="tag">Creative Direction</span>
@@ -124,12 +138,12 @@
 
       <div class="project-card fade-in">
         <a href="project-pellucid.html" class="project-card-image">
-          <img src="https://images.squarespace-cdn.com/content/v1/64f7ea35d7e9630c4fc4d44b/419800ba-77ef-418b-bb9a-65418d50aa67/Pellucid-Cosmetics-Lifestyle-HR-2501.png" alt="Pellucid brand and documentary">
+          <img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/64f7ea35d7e9630c4fc4d44b/419800ba-77ef-418b-bb9a-65418d50aa67/Pellucid-Cosmetics-Lifestyle-HR-2501.png" alt="Pellucid brand and documentary">
         </a>
         <div class="project-card-content">
           <p class="section-label">Featured Project</p>
           <h3>Pellucid</h3>
-          <p class="lead">Investor documentary, explainer videos, celebrity campaign spot, and logo rebrand for a THC-free cannabinoid wellness startup. Pitch deck creative contributed to securing $10M in capital at JYCO Startup Studio.</p>
+          <p class="lead">Led pitch deck and video creative for a THC-free cannabinoid wellness startup at JYCO Startup Studio — securing $10M in capital. Delivered investor documentary, explainer videos, celebrity campaign spot, and logo rebrand.</p>
           <div class="tags">
             <span class="tag">Documentary</span>
             <span class="tag">Video</span>
@@ -173,8 +187,8 @@
           <div class="stat-label">Theme parks served as lead creative for Village Roadshow</div>
         </div>
         <div class="stat fade-in stagger-2">
-          <div class="stat-number">5</div>
-          <div class="stat-label">Countries — AU, US, CA, NZ, and China</div>
+          <div class="stat-number">7</div>
+          <div class="stat-label">Countries — AU, US, CA, NZ, China, Japan, and Hong Kong</div>
         </div>
       </div>
     </div>
@@ -186,7 +200,7 @@
       <p class="section-label fade-in">Ready to start?</p>
       <h2 class="fade-in">Let's build something together.</h2>
       <p class="lead fade-in" style="margin: 0 auto var(--space-lg);">I'm open to new projects, creative partnerships, and senior creative roles — remote or Gold Coast–based.</p>
-      <a href="contact.html" class="btn btn-primary btn-arrow fade-in">Get in Touch</a>
+      <a href="about.html#contact" class="btn btn-primary btn-arrow fade-in">Get in Touch</a>
     </div>
   </section>
 
@@ -198,7 +212,8 @@
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
         <a href="photography.html">Photography</a>
-        <a href="contact.html">Contact</a>
+        <a href="https://www.linkedin.com/in/david-paull" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="David-Paull-Resume.docx" download>Resume</a>
       </div>
     </div>
   </footer>
