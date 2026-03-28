@@ -158,8 +158,18 @@ body::before {
 
 @media (max-width: 768px) {
 
-  /* Keep nav on top of everything */
-  .nav { z-index: 9100; background: rgba(250, 250, 248, 0.98); }
+  /* Keep nav on top of everything.
+     backdrop-filter removed: it creates a fixed-position containing block
+     that traps .nav-links inside the 72px nav bar instead of the viewport. */
+  .nav {
+    z-index: 9100;
+    background: rgba(250, 250, 248, 0.98);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* Hide icons (phone, LinkedIn, share, CV) from the full-screen mobile menu */
+  .nav-links .nav-icon { display: none; }
 
   /* Show hamburger */
   .nav-toggle {
