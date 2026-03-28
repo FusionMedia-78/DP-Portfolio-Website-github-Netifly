@@ -840,6 +840,17 @@ h4, .h4 {
   line-height: 1;
 }
 
+/* ---- Case Study Image Lightbox Trigger ---- */
+.case-study-grid img,
+.case-study-image-full img {
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+.case-study-grid img:hover,
+.case-study-image-full img:hover {
+  opacity: 0.85;
+}
+
 /* ---- Case Study Layout ---- */
 body:has(.case-study-hero) {
   background: #ffffff;

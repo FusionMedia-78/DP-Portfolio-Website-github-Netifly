@@ -55,6 +55,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ---- Project Page Image Lightbox ----
+  if (document.querySelector('.case-study-hero')) {
+    const plb = document.createElement('div');
+    plb.className = 'lightbox';
+    plb.innerHTML = '<button class="lightbox-close" aria-label="Close">&times;</button><img src="" alt="" style="max-width:90vw;max-height:90vh;object-fit:contain;">';
+    document.body.appendChild(plb);
+    const plbImg = plb.querySelector('img');
+
+    function openProjectLightbox(src, alt) {
+      plbImg.src = src;
+      plbImg.alt = alt;
+      plb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeProjectLightbox() {
+      plb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    plb.addEventListener('click', closeProjectLightbox);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProjectLightbox(); });
+
+    document.querySelectorAll('.case-study-image-full img, .case-study-grid img').forEach(img => {
+      img.addEventListener('click', () => openProjectLightbox(img.src, img.alt));
+    });
+  }
+
   // ---- Gallery Filters ----
   const filters = document.querySelectorAll('.gallery-filter');
   const galleryItems = document.querySelectorAll('.gallery-item');
