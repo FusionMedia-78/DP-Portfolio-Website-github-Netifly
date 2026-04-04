@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JW Marriott Gold Coast — David Paull</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ════════════════════════════════════════
+     DESIGN TOKENS — extracted from davidpaull.netlify.app
+     ════════════════════════════════════════ */
+  :root {
+    --bg-primary:     #FAFAF8;
+    --bg-secondary:   #F3F2EF;
+    --bg-card:        #FFFFFF;
+    --bg-card-hover:  #F7F6F3;
+    --surface-subtle: #EEECEA;
+    --text-primary:   #1A1A18;
+    --text-secondary: #5A5650;
+    --text-muted:     #9A958E;
+    --accent:         #008787;
+    --accent-dim:     #006666;
+    --accent-glow:    rgba(0, 135, 135, 0.1);
+    --border:         rgba(26, 26, 24, 0.1);
+    --border-strong:  rgba(26, 26, 24, 0.18);
+    --font-display:   'Montserrat', sans-serif;
+    --font-body:      'Libre Franklin', sans-serif;
+    --font-mono:      'Space Mono', monospace;
+    --section-pad:    clamp(5rem, 8vw, 8rem);
+    --content-max:    900px;
+    --wide-max:       1200px;
+    --nav-height:     72px;
+    --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-smooth:    cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; }
+
+  /* ─── NAV ─── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-height);
+    padding: 0 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    background: rgba(250, 250, 248, 0.9);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 0.85rem; letter-spacing: 0.02em; color: var(--text-primary);
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-mono); font-size: 0.7rem; font-weight: 400;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); transition: color 0.3s var(--ease-smooth);
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ─── TYPOGRAPHY ─── */
+  .eyebrow {
+    font-family: var(--font-mono); font-weight: 400;
+    font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  .heading-xl {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(2.8rem, 6vw, 4.5rem); line-height: 1.08;
+    letter-spacing: -0.03em; color: var(--text-primary);
+  }
+  .heading-lg {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.15;
+    letter-spacing: -0.02em; color: var(--text-primary);
+  }
+  .heading-md {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 1.2rem; line-height: 1.3;
+    letter-spacing: -0.01em; color: var(--text-primary);
+  }
+  .heading-xl em, .heading-lg em, .heading-md em {
+    font-style: italic; font-weight: inherit; color: var(--accent);
+  }
+  .body-text {
+    font-family: var(--font-body); font-weight: 400;
+    font-size: 0.95rem; line-height: 1.75; color: var(--text-secondary);
+  }
+  .body-text strong { font-weight: 600; color: var(--text-primary); }
+  .body-sm {
+    font-family: var(--font-body); font-weight: 400;
+    font-size: 0.88rem; line-height: 1.8; color: var(--text-secondary);
+  }
+
+  /* ─── LAYOUT ─── */
+  .section { padding: var(--section-pad) 2rem; max-width: var(--content-max); margin: 0 auto; }
+  .section-wide { padding: var(--section-pad) 2rem; max-width: var(--wide-max); margin: 0 auto; }
+  .section--center { text-align: center; }
+
+  .rule { width: 50px; height: 1px; background: var(--surface-subtle); }
+  .rule--center { margin: 0 auto 2.5rem; }
+  .rule--left { margin: 0 0 2rem; }
+
+  /* ─── HERO ─── */
+  .hero {
+    width: 100%; position: relative; overflow: hidden;
+    text-align: center;
+  }
+  .hero-image-wrap {
+    position: relative; width: 100%;
+  }
+  .hero-image {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .hero-overlay {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.9) 100%);
+    padding: calc(var(--nav-height) + 4rem) 2rem 5rem;
+  }
+  .hero-overlay .eyebrow { margin-bottom: 1.25rem; }
+  .hero-title {
+    margin: 0; max-width: none;
+  }
+  .hero-sub {
+    margin: 1.5rem 0 0; max-width: 42ch;
+    font-family: var(--font-body); font-weight: 400;
+    font-size: 0.95rem; color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .scroll-cue {
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    margin-top: 2.5rem;
+  }
+  .scroll-cue span {
+    font-family: var(--font-mono);
+    font-size: 0.55rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+  .scroll-cue .bar {
+    width: 1px; height: 32px;
+    background: linear-gradient(to bottom, var(--text-muted), transparent);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ─── BAND / FULL-WIDTH ─── */
+  .band { width: 100%; position: relative; overflow: hidden; }
+  .band img { width: 100%; height: 60vh; object-fit: cover; }
+
+  /* ─── PHOTO GRID ─── */
+  .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .photo-card {
+    position: relative; overflow: hidden; border-radius: 2px;
+    aspect-ratio: 4 / 3; background: var(--bg-card);
+    border: 1px solid var(--border);
+  }
+  .photo-card.tall { grid-row: span 2; aspect-ratio: auto; }
+  .photo-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s var(--ease-out);
+  }
+  .photo-card:hover img { transform: scale(1.04); }
+  .photo-card .caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 2rem 1rem 0.8rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    font-family: var(--font-mono);
+    font-size: 0.65rem; font-weight: 400; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff; opacity: 0; transform: translateY(4px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .photo-card:hover .caption { opacity: 1; transform: translateY(0); }
+
+  /* ─── STATS ─── */
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem;
+    text-align: center; padding: 5rem 2rem;
+    max-width: var(--content-max); margin: 0 auto;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat-val {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(2.4rem, 5vw, 3rem); color: var(--accent);
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .stat-lbl {
+    font-family: var(--font-mono); font-size: 0.6rem; font-weight: 400;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); line-height: 1.5;
+  }
+
+  /* ─── SERVICES ─── */
+  .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem 4rem; margin-top: 2.5rem; }
+  .svc .heading-md { margin-bottom: 0.5rem; }
+  .svc .body-sm { max-width: 38ch; }
+
+  /* ─── TAGS ─── */
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.55rem; font-weight: 400; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-muted);
+    border: 1px solid var(--border-strong); border-radius: 0;
+    padding: 0.35rem 0.75rem;
+  }
+
+  /* ─── QUOTE ─── */
+  .quote-band {
+    padding: 5rem 2rem;
+    background: var(--bg-secondary);
+    text-align: center;
+  }
+  .quote-band blockquote {
+    font-family: var(--font-body); font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+    line-height: 1.7; max-width: 34ch; margin: 0 auto;
+    color: var(--text-primary);
+  }
+  .quote-band blockquote span { color: var(--accent); }
+  .quote-band cite {
+    display: block; margin-top: 1.2rem;
+    font-family: var(--font-mono); font-style: normal;
+    font-size: 0.6rem; font-weight: 400;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ─── CTA ─── */
+  .cta {
+    text-align: center; padding: var(--section-pad) 2rem;
+    position: relative; background: var(--bg-secondary);
+  }
+  .cta .heading-lg { margin-bottom: 1.5rem; }
+  .cta .body-sm { max-width: 46ch; margin: 0 auto 2.5rem; }
+  .btn {
+    display: inline-block; font-family: var(--font-mono);
+    font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--bg-primary);
+    background: var(--accent); padding: 0.78rem 1.9rem; border-radius: 0;
+    transition: background 0.3s var(--ease-smooth), transform 0.2s ease;
+  }
+  .btn:hover { background: var(--accent-dim); transform: translateY(-1px); }
+  .cta-contact { margin-top: 2rem; font-size: 0.78rem; color: var(--text-muted); }
+  .cta-contact a {
+    color: var(--accent); transition: color 0.3s ease;
+  }
+  .cta-contact a:hover { color: var(--accent-dim); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-body);
+    font-size: 0.7rem; color: var(--text-muted);
+  }
+  footer a {
+    font-family: var(--font-mono); font-size: 0.6rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted); margin: 0 0.8rem;
+    transition: color 0.3s ease;
+  }
+  footer a:hover { color: var(--accent); }
+
+  /* ─── PLACEHOLDERS ─── */
+  .ph {
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.7rem;
+    background: var(--bg-secondary);
+    border: 1px dashed var(--border-strong);
+  }
+  .ph-icon {
+    width: 28px; height: 28px; border: 1.5px solid var(--accent);
+    border-radius: 50%; display: grid; place-items: center;
+    color: var(--accent); font-size: 0.75rem;
+  }
+  .ph-label {
+    font-family: var(--font-mono);
+    font-size: 0.55rem; font-weight: 400; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+  .ph-hint {
+    font-family: var(--font-body);
+    font-size: 0.7rem; color: var(--text-muted); font-weight: 400;
+    max-width: 22ch; text-align: center; line-height: 1.45;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+  .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+  .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.15s; }
+  .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.2s; }
+  .reveal-stagger.visible > * { opacity: 1; transform: translateY(0); }
+
+  .hero .eyebrow, .hero .heading-xl, .hero-sub, .scroll-cue {
+    opacity: 0; animation: fadeUp 0.9s ease forwards;
+  }
+  .hero .eyebrow    { animation-delay: 0.2s; }
+  .hero .heading-xl { animation-delay: 0.5s; }
+  .hero-sub          { animation-delay: 0.85s; }
+  .scroll-cue        { animation-delay: 1.3s; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── PRICING ─── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+  .pricing-card {
+    border: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+    background: var(--bg-card);
+    position: relative;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pricing-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 24px rgba(0,135,135,0.08);
+  }
+  .pricing-card.featured {
+    border-color: var(--accent);
+    background: var(--bg-card);
+  }
+  .pricing-card.featured::before {
+    content: 'Recommended';
+    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+    font-family: var(--font-mono); font-size: 0.55rem; font-weight: 400;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--bg-primary); background: var(--accent);
+    padding: 0.3rem 0.9rem;
+  }
+  .pricing-tier {
+    font-family: var(--font-mono); font-size: 0.6rem; font-weight: 400;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+  }
+  .pricing-name {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 1.35rem; line-height: 1.2; letter-spacing: -0.01em;
+    color: var(--text-primary); margin-bottom: 1.25rem;
+  }
+  .pricing-price {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(2rem, 3.5vw, 2.6rem); color: var(--text-primary);
+    line-height: 1; margin-bottom: 0.35rem;
+  }
+  .pricing-price span {
+    font-family: var(--font-body); font-size: 0.85rem;
+    font-weight: 400; color: var(--text-muted); letter-spacing: 0;
+  }
+  .pricing-cadence {
+    font-family: var(--font-mono); font-size: 0.58rem; font-weight: 400;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 2rem;
+  }
+  .pricing-divider {
+    width: 100%; height: 1px; background: var(--surface-subtle); margin-bottom: 2rem;
+  }
+  .pricing-features {
+    list-style: none; display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .pricing-features li {
+    font-family: var(--font-body); font-size: 0.88rem;
+    color: var(--text-secondary); line-height: 1.5;
+    display: flex; align-items: flex-start; gap: 0.65rem;
+  }
+  .pricing-features li::before {
+    content: '—';
+    font-family: var(--font-mono); font-size: 0.7rem;
+    color: var(--accent); flex-shrink: 0; margin-top: 0.1em;
+  }
+  .pricing-features li.muted { color: var(--text-muted); }
+  .pricing-features li.muted::before { color: var(--border-strong); }
+  .pricing-note {
+    margin-top: 2rem;
+    font-family: var(--font-body); font-size: 0.78rem;
+    color: var(--text-muted); line-height: 1.6; text-align: center;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.6rem; }
+    .photo-grid { grid-template-columns: 1fr; }
+    .photo-card.tall { grid-row: span 1; aspect-ratio: 4/3; }
+    .stats { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 2rem; }
+    .services { grid-template-columns: 1fr; gap: 2rem; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .section, .section-wide { padding: 4rem 1.5rem; }
+  }
+  @media (max-width: 480px) { .nav-links { display: none; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#hero" class="nav-brand">David.Paull</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#microsites">Microsites</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-image-wrap">
+    <img src="Main-headerimage.webp" alt="Children playing at the JW Marriott Gold Coast pool" class="hero-image">
+    <div class="hero-overlay">
+      <p class="eyebrow">A pitch for JW Marriott Gold Coast</p>
+      <h1 class="heading-xl hero-title">Welcome <em>back,</em> Laura.</h1>
+      <p class="hero-sub">From Citrique to the corner office. The resort deserves creative that feels like the Gold Coast — not corporate stock imagery.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--center reveal" style="padding-top: 2.5rem;">
+  <div class="rule rule--center"></div>
+  <p class="body-text">You started at this resort as an F&B attendant at Citrique in 2016. You've led marketing for Sheraton Grand Sydney and Four Points. Now you're back — as <strong>Director of Marketing</strong> — writing the next chapter for JW Marriott Gold Coast.</p>
+  <br>
+  <p class="body-text">That story tells me something: you care deeply about this property. And you're building your own creative team, your own supplier relationships, your own visual identity.</p>
+  <br>
+  <p class="body-text">I'd like to be part of that conversation.</p>
+</section>
+
+<div class="band">
+  <img src="SWR-TUFTPH_SunsetWalk-HERO-RGB.webp" alt="JW Marriott Gold Coast Resort" style="width:100%;height:60vh;object-fit:cover;display:block;">
+</div>
+
+<section class="section reveal" style="padding-left: 1rem; padding-right: 1rem;">
+  <div class="rule rule--left"></div>
+  <p class="eyebrow" style="margin-bottom: 1rem;">Who I Am</p>
+  <h2 class="heading-lg">The CD who still <em>makes</em> things.</h2>
+  <br>
+  <p class="body-sm" style="text-align: center;">I'm David Paull — Creative Director, photographer, and AI&#8209;workflow builder based in Burleigh Heads. I've spent 20+ years leading creative across luxury venues, resort F&amp;B, lifestyle campaigns, ecommerce, and brand positioning for national and international markets.</p>
+  <br>
+  <p class="body-sm" style="text-align: center;">My work for Village Roadshow Theme Parks alone spans 15 years, 6 parks, 30+ F&amp;B outlets, 200+ campaigns, and a Lionsgate theme park build in China. I scaled their in&#8209;house creative studio from 4 to 18 — replacing all external agencies. I know what luxury F&amp;B creative looks like at scale, and I know the Gold Coast.</p>
+  <br>
+  <p class="body-sm" style="text-align: center;">Today I'm leaning hard into AI&#8209;assisted production — using it to spin up personalised micro&#8209;sites, campaign landing pages, and EDM creative in hours instead of weeks. That combination of senior creative direction, hands&#8209;on photography and design, and fast AI workflows is what I'm bringing to JW Marriott Gold Coast and its outlets.</p>
+  <div class="tags">
+    <span class="tag">Creative Direction</span>
+    <span class="tag">F&B Photography</span>
+    <span class="tag">Brand Strategy</span>
+    <span class="tag">Campaign Creative</span>
+    <span class="tag">Venue Photography</span>
+  </div>
+</section>
+
+<div class="stats reveal reveal-stagger">
+  <div>
+    <div class="stat-val">20+</div>
+    <div class="stat-lbl">Years Creative<br>Leadership</div>
+  </div>
+  <div>
+    <div class="stat-val">200+</div>
+    <div class="stat-lbl">Campaigns Directed<br>& Photographed</div>
+  </div>
+  <div>
+    <div class="stat-val">6</div>
+    <div class="stat-lbl">Luxury Venues<br>as Lead Creative</div>
+  </div>
+</div>
+
+<section class="section-wide reveal" id="work">
+  <p class="eyebrow" style="text-align: center; margin-bottom: 1rem;">Selected Work</p>
+  <h2 class="heading-lg" style="text-align: center; margin-bottom: 3rem;">Luxury F&B & <em>resort</em> photography.</h2>
+  <div class="photo-grid">
+    <div class="photo-card tall">
+      <img src="wwsy_WavePool_Young_Adults_9710_300dpi_F39.webp" alt="Wave pool couple" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="photo-card">
+      <img src="TC-RoofBar-Millennials-3_sRGB-50p.webp" alt="Rooftop bar sunset" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="photo-card">
+      <img src="Broadwater_Executive_Spa_Room1_RGB_400dpi+(1).webp" alt="Broadwater executive room" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="photo-card">
+      <img src="Capital_Food-218.webp" alt="Fine dining dish" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="photo-card">
+      <img src="LG-Lionsgate-173.webp" alt="Chicken burger" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="photo-card tall">
+      <img src="SWR_Seafood_Buffet-CMYK_Master.webp" alt="Seafood buffet spread" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="photo-card">
+      <img src="TC-Table-NIGHT-Millennials-3-400dpi-RGB.webp" alt="TopGolf night entertainment" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+  </div>
+</section>
+
+<div class="quote-band">
+  <blockquote>
+    "The Gold Coast has its own light, its own energy. Luxury here shouldn't look like it was photographed in Dubai or Singapore — it should feel unmistakably <span>here.</span>"
+  </blockquote>
+  <cite>— David Paull</cite>
+</div>
+
+<section class="section reveal">
+  <div class="rule rule--left"></div>
+  <p class="eyebrow" style="margin-bottom: 1rem;" id="services">What I'd Bring</p>
+  <h2 class="heading-lg">Creative that moves the <em>needle.</em></h2>
+  <div class="services reveal-stagger">
+    <div class="svc">
+      <h4 class="heading-md">Resort & F&B Photography</h4>
+      <p class="body-sm">Two decades of luxury food, beverage, and venue photography. Styled, lit, and art directed to make every dish and space look extraordinary — on menu boards, in social, and across campaigns.</p>
+    </div>
+    <div class="svc">
+      <h4 class="heading-md">Campaign Creative</h4>
+      <p class="body-sm">End-to-end creative direction from concept through production. National campaigns across TV, cinema, social, print, and OOH — including international rollouts for Lionsgate in China.</p>
+    </div>
+    <div class="svc">
+      <h4 class="heading-md">Brand Positioning</h4>
+      <p class="body-sm">Visual identity and brand strategy that differentiates. I've directed full rebrands resulting in 400% sales increases and built visual systems for six flagship venues simultaneously.</p>
+    </div>
+    <div class="svc">
+      <h4 class="heading-md">Local Knowledge</h4>
+      <p class="body-sm">Based in Burleigh Heads. I've photographed the Gold Coast for 20 years — the light, the landscapes, the lifestyle. No fly-in agency can match that intimacy with the region.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="rule rule--left"></div>
+  <p class="eyebrow" style="margin-bottom: 1rem;" id="microsites">Something Extra</p>
+  <h2 class="heading-lg">AI-powered microsites for <em>every</em> outlet.</h2>
+  <p class="body-text" style="margin-top: 1.5rem;">Beyond photography and creative direction, I'm also building AI-driven microsites — dedicated digital spaces for individual restaurants and F&B outlets that go far beyond a listing on a resort page.</p>
+  <div class="services reveal-stagger" style="margin-top: 2.5rem;">
+    <div class="svc">
+      <h4 class="heading-md">Own Visual Identity</h4>
+      <p class="body-sm">Each outlet gets its own photography, colour palette, and tone of voice — Citrique feels like Citrique, not a generic resort page.</p>
+    </div>
+    <div class="svc">
+      <h4 class="heading-md">AI-Generated Content</h4>
+      <p class="body-sm">Venue descriptions, dish stories, and seasonal highlights written and refreshed by AI — tailored to the outlet's concept, menu, and Gold Coast context.</p>
+    </div>
+    <div class="svc">
+      <h4 class="heading-md">Guest Personalisation</h4>
+      <p class="body-sm">Content adapts to who's viewing it. Couples see intimate dining options. Families see kid-friendly menus. Loyalty members see exclusive experiences.</p>
+    </div>
+    <div class="svc">
+      <h4 class="heading-md">Always Current</h4>
+      <p class="body-sm">Seasonal menus, event promotions, and chef specials update dynamically. The microsite is never stale because the content layer is always generating.</p>
+    </div>
+  </div>
+  <div style="margin-top: 3rem; border: 1px solid var(--border);">
+    <img src="microsite-mockup.webp" alt="Microsite example — Chapter & Verse cocktail menu on mobile" style="width: 100%; display: block;">
+    <p style="font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); padding: 0.75rem; text-align: center;">Microsite Mockup — Example Citrique or Lobby Lounge microsite</p>
+  </div>
+</section>
+
+<section class="section reveal" id="pricing">
+  <div class="rule rule--left"></div>
+  <p class="eyebrow" style="margin-bottom: 1rem;">Investment</p>
+  <h2 class="heading-lg">Three ways to work <em>together.</em></h2>
+  <p class="body-text" style="margin-top: 1.25rem; max-width: 54ch;">Every engagement is tailored, but these tiers give you a clear starting point. All retainers are month-to-month with a 30-day notice period — no lock-in.</p>
+
+  <div class="pricing-grid reveal-stagger">
+
+    <!-- TIER 1 -->
+    <div class="pricing-card">
+      <p class="pricing-tier">Tier 01</p>
+      <h3 class="pricing-name">Foundations</h3>
+      <div class="pricing-price">$3,500 <span>AUD</span></div>
+      <p class="pricing-cadence">Per month + GST</p>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>1 full-day shoot per month</li>
+        <li>Up to 40 edited hero images</li>
+        <li>Food, beverage &amp; venue coverage</li>
+        <li>Licensed for all digital channels</li>
+        <li>48-hr turnaround on selects</li>
+        <li class="muted">Campaign creative</li>
+        <li class="muted">AI microsite build</li>
+        <li class="muted">Brand strategy</li>
+      </ul>
+    </div>
+
+    <!-- TIER 2 — FEATURED -->
+    <div class="pricing-card featured">
+      <p class="pricing-tier">Tier 02</p>
+      <h3 class="pricing-name">Creative Partner</h3>
+      <div class="pricing-price">$6,500 <span>AUD</span></div>
+      <p class="pricing-cadence">Per month + GST</p>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>2 full-day shoots per month</li>
+        <li>Up to 80 edited hero images</li>
+        <li>Food, beverage, venue &amp; lifestyle</li>
+        <li>Licensed for all channels incl. OOH</li>
+        <li>Campaign concepting &amp; direction</li>
+        <li>Social content calendar support</li>
+        <li>Art direction for paid media</li>
+        <li class="muted">AI microsite build</li>
+      </ul>
+    </div>
+
+    <!-- TIER 3 -->
+    <div class="pricing-card">
+      <p class="pricing-tier">Tier 03</p>
+      <h3 class="pricing-name">Full Studio</h3>
+      <div class="pricing-price">$10,500 <span>AUD</span></div>
+      <p class="pricing-cadence">Per month + GST</p>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Everything in Creative Partner</li>
+        <li>Unlimited digital licensing</li>
+        <li>AI microsite — up to 3 outlets</li>
+        <li>Ongoing content regeneration</li>
+        <li>Brand &amp; visual identity audit</li>
+        <li>Quarterly campaign strategy</li>
+        <li>Priority scheduling &amp; turnaround</li>
+        <li>Dedicated creative slack channel</li>
+      </ul>
+    </div>
+
+  </div>
+  <p class="pricing-note">Bespoke project scoping available — single shoots, campaign productions, and microsite builds can be quoted as standalone engagements.</p>
+</section>
+
+<section class="cta reveal" id="contact">
+  <div class="rule rule--center"></div>
+  <h2 class="heading-lg">Let's talk over <em>coffee.</em></h2>
+  <p class="body-sm">20 minutes at the resort. I'll bring a curated portfolio of my most relevant luxury F&B and venue work. No pitch deck, no pressure — just a conversation about what JW Marriott Gold Coast deserves.</p>
+  <a href="https://www.linkedin.com/in/david-paull" class="btn">Connect on LinkedIn →</a>
+  <div class="cta-contact">
+    <p>
+      <a href="mailto:dave@fusionmedia.wtf">dave@fusionmedia.wtf</a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="tel:+61402034986">0402 034 986</a>
+    </p>
+    <p style="margin-top: 0.4rem;"><a href="https://davidpaull.netlify.app">davidpaull.netlify.app</a></p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 David Paull — Fusion Media. All rights reserved.</p>
+  <p style="margin-top: 0.6rem;">
+    <a href="https://davidpaull.netlify.app/about">About</a>
+    <a href="https://davidpaull.netlify.app/projects">Projects</a>
+    <a href="https://davidpaull.netlify.app/photography">Photography</a>
+    <a href="https://www.linkedin.com/in/david-paull">LinkedIn</a>
+  </p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
